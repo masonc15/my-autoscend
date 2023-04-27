@@ -61,6 +61,9 @@ boolean L4_batCave()
 		{
 			buffMaintain($effect[Queso Fustulento], 10, 1, 10);
 			buffMaintain($effect[Tricky Timpani], 30, 1, 10);
+			if(auto_haveGreyGoose() && $location[The Boss Bat's Lair].turns_spent >=4){
+				handleFamiliar($familiar[Grey Goose]);
+			}
 		}
 		bat_formWolf();
 		addToMaximize("10meat");
@@ -90,6 +93,9 @@ boolean L4_batCave()
 			auto_log_debug("Delaying Batrat Burrow in case of Shen.");
 			return false;
 		}
+		if(auto_haveGreyGoose()){
+			handleFamiliar($familiar[Grey Goose]);
+		}
 		autoAdv($location[The Batrat and Ratbat Burrow]);
 		return true;
 	}
@@ -101,6 +107,9 @@ boolean L4_batCave()
 			return false;
 		}
 		bat_formBats();
+		if(auto_haveGreyGoose()){
+			handleFamiliar($familiar[Grey Goose]);
+		}
 		autoAdv($location[The Batrat and Ratbat Burrow]);
 		return true;
 	}
@@ -115,5 +124,8 @@ boolean L4_batCave()
 	}
 
 	bat_formBats();
+	if(auto_haveGreyGoose()){
+		handleFamiliar($familiar[Grey Goose]);
+	}
 	return autoAdv($location[Guano Junction]);
 }
